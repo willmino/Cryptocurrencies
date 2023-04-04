@@ -60,4 +60,22 @@ The data was plotted using hvplot
 
 `df_elbow.hvplot.line(x='k', y='inertia', title='Elbow Curve')`
 
-![]()
+When the k value triage plot, known as the "Elbow Curve", was plotted, we could begin to determine the number of ideal clusters for this dataset.
+A rule of thumb for determining the k value, the number of clusters needed for the data, is to observe when the curve begins to change towards a flat line.
+In the Elbow Curve plotted below, we can see the curve begins to look flat first at the value of k=5.
+Thus, k = 5 was chosen and we would then cluster the data into 5 groups.
+
+![elbow_curve](https://github.com/willmino/Cryptocurrencies/blob/main/images/elbow_curve.png)
+
+### KMeans Clustering
+
+KMeans clustering was then carried out with k =5, for  clustering into 5 groups.
+
+`model = KMeans(n_clusters=5, random_state=42)`
+
+`model.fit(pcs_df)`
+
+`predictions = model.predict(pcs_df)`
+
+The predictions for clustering were finalized to a list of classes. This "Class" list contained numerical labels for each cluster group
+ranging from 0 to 4 (a total of 5 groups).
