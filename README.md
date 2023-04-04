@@ -9,6 +9,8 @@ based on several parameters of the dataset including: total coins mined, total c
 Unsupervised ML is used typically when trends need to be found in a data set. When we eliminate the supervisor of our data, the target variable, or sometimes not evening having a target variable,
 we need to determine what question to ask about our data set so we can determine what trends may arise.
 
+### A note on Dimensionality Reduction
+
 One effective way to discover trends using unsupervised ML is dimensionality reduction.
 The process of principal component analysis serves to reduce the dimensions of a data set to contain the data with the highest variance.
 PCA is accomplished by a series of transformation involving the plotting of variance and covariance values of a dataset.
@@ -63,13 +65,13 @@ The data was plotted using hvplot
 When the k value triage plot, known as the "Elbow Curve", was plotted, we could begin to determine the number of ideal clusters for this dataset.
 A rule of thumb for determining the k value, the number of clusters needed for the data, is to observe when the curve begins to change towards a flat line.
 In the Elbow Curve plotted below, we can see the curve begins to look flat first at the value of k=5.
-Thus, k = 5 was chosen and we would then cluster the data into 5 groups.
+Thus, k = 5 was chosen and we would then cluster the data into 5 Classes.
 
 ![elbow_curve](https://github.com/willmino/Cryptocurrencies/blob/main/images/elbow_curve.png)
 
 ### KMeans Clustering
 
-KMeans clustering was then carried out with k =5, for  clustering into 5 groups.
+KMeans clustering was then carried out with k =5, for  clustering into 5 Classes.
 
 `model = KMeans(n_clusters=5, random_state=42)`
 
@@ -128,13 +130,50 @@ Here is the plot of the scaled 2D data.
 
 ![2D_plot](https://github.com/willmino/Cryptocurrencies/blob/main/images/2D_plot.png)s
 
-We can see that on a 2D plot, groups 0 and 1 are clustered very similarly.
-
-To attempt to observe the similarties between these clusters, I looked at different summary statistics of the data.
-For example, grouping this data set by "Class" and looking at mean as the aggregation function reveals.
+We can see that on a 2D plot, Classes 0 and 1 are clustered very similarly.
 
 `mined_df.groupby("Class").mean()["TotalCoinsMined"]`
 
+To attempt to observe the similarties between these clusters, I looked at different summary statistics of the data.
+For example, grouping this data set by "Class" and looking at mean as the aggregation function of "TotalCoinsMined" reveals that
+Classes 0 and 1 had a similar number of mined coins. `Class 0: 2.38E09`. `Class 1: 2.25E09`. These are in the range of billions of coins.
+The similarity between these two Classes is apparent in the 2D plot.
 
+We can see that Classes 3 and 4 exhibited average "TotalCoinsMined" values in the range of 1.16E10 to 4.08E10, the next most similar range. 
+Classes 3 and 4 are also visually close together in terms of their clustering in the 2D plot. 
+Class 2 is a bit of an outlier in this data set. Its "TotalCoinsMined" value is at 9.90E11. This is in the range of hundreds of billions. This is the most unique cluster out of all the data because it is only one point.
+Thus, Class 2 is depicted as the most distant from any of the other Class.
 
-Group 2 was completely different from the rest of the groups so it was plotted in the upper right corner of the plot, away from all other points.
+![grouped_by_class_mean_aggregation](https://github.com/willmino/Cryptocurrencies/blob/main/images/Class.png)
+
+One other trend I wanted to observe in the data set was that if clustering was influenced by the "ProofType" of each cryptocurrency. I avoided looking at "Algorithm" among the data
+because there were so many unique algorithms in each "Class".
+To observe the different prooftypes of each class I used the following code: `mined_df.loc[mined_df["Class"]==0]["ProofType"].unique()` and I changed the numerical input in the `==0` argument.
+
+So if I wanted to look at class 1, I would write `mined_df.loc[mined_df["Class"]==1]["ProofType"].unique()` instead.
+
+I was able to observe a small list of common prooftypes among the classes.
+In fact, Class 0 had the most common and also limited number of prooftype stakes. The prooftypes for Class 0 were 'PoW' and 'dPoW/PoW'.
+I found this interesting in the dataset because there were about 233 cryptos with either of these prooftypes for staking.
+Since it was so common, it seems like this prooftype is the most favorable for a crypto currency. Upon further examination of the coins in the dataset,
+it was revealed that Class 0 contained Bitcoin, Ethereum, and Litecoin, three of the largest and most stable crypto currencies to date. Class 0 with all of this in mind
+made a favorable case for its potential attractiveness to the bank's customers.
+
+## Conclusion
+
+I was tasked with generating this report for Accountability Accounting to show their customers what was the most favorable cryptocurrencies in which to invest.
+The bank had no knowledge of the crypto sector and it was up to me to determine rationale for why certain cryptocurrencies were important for customers.
+Scarcity is one of the main attractors for cryptocurrency, since only a limited number of coins can be made. Its important for investors
+to know that their crypto investment should be in a coin that has as high scarcity as practically possible. In this way, the most value can be accumulated over time due to scarcity.
+
+From the unsupervised machine learning analysis on the Cryptocurrency dataset, we attempted to observe some trends in the data.
+It appeared that the clustering model showed several classes of clusters with similar data.
+From the clusters of the most similar cryptos in the dataset, Cluster 0 exhibited the lowest average "TotalCoinsMined" value together with the lowest "TotalCoinSupply" value.
+While many of these cryptos are available, customers will be pleased to know that additional coins will not be made once the final "Bitcoin" (for example) is mined.
+This allows for scarcity and increasing value over time to be established for these cryptocurrencies.
+
+It was also interesting to see that the KMeans algorithm used in this analysis was able to accurately cluster the largest and most successful cryptocurrencies into the same group, Class 0.
+Additionally Class 0 contained only two types of proof of stake mechanisms ("prooftype" column). The most credible cryptocurrencies
+in this group were Bitcoin, Ethereum, and Litecoin, among others. With most of the coins using the strong and popular 'PoW' proof of stake mechanism,
+Class 0 began to look like the most credible Class of cryptos for customers to invest in.
+Thus, I recommended the Class 0 set of cryptocurrencies (Bitcoin, Ethereumm Litecoin, etc.) to the customers of Accountability Accounting because it serves as a credible, sustainable, and dependenable investment.
