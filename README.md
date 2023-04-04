@@ -2,9 +2,9 @@
 Unsupervised Machine Learning Models
 
 ## Purpose
-An unsupervised Machine Learning (ML) model was used to help an investing bank proive a cryptocurrency investment portfolio for its customers.
+An unsupervised Machine Learning (ML) model was used to help an investing bank provide a cryptocurrency investment portfolio for its customers.
 I created a report that includes cryptocurrencies currently being traded on the market. Each currency was classified in a distinct risk group
-based on several parameters of the dataset including: total coins mined, total coin supply, block chain algorithm, and prooftype (proof of stake; for transcation verification).
+based on several parameters of the dataset including: total coins mined, total coin supply, block chain algorithm, and prooftype (proof of stake; for transaction verification).
 
 Unsupervised ML is used typically when trends need to be found in a data set. When we eliminate the supervisor of our data, the target variable, or sometimes not evening having a target variable,
 we need to determine what question to ask about our data set so we can determine what trends may arise.
@@ -13,7 +13,7 @@ we need to determine what question to ask about our data set so we can determine
 
 One effective way to discover trends using unsupervised ML is dimensionality reduction.
 The process of principal component analysis serves to reduce the dimensions of a data set to contain the data with the highest variance.
-PCA is accomplished by a series of transformation involving the plotting of variance and covariance values of a dataset.
+PCA is accomplished by a series of transformations involving the plotting of variance and covariance values of a dataset.
 Once these transformations and plots are accomplished, a new coordinate system called the prinicipal component space is established.
 Within the principal component space are eigenvectors representing the direction of spread of data. These eigenvectors have an eigenvalue which quantifies
 the magnitude of the variance in a particular direction.
@@ -161,8 +161,8 @@ made a favorable case for its potential attractiveness to the bank's customers.
 
 ## Conclusion
 
-I was tasked with generating this report for Accountability Accounting to show their customers what was the most favorable cryptocurrencies in which to invest.
-The bank had no knowledge of the crypto sector and it was up to me to determine rationale for why certain cryptocurrencies were important for customers.
+I was tasked with generating this report for Accountability Accounting to prepare a portfolio of the most favorable cryptocurrencies in which to invest.
+The bank had no knowledge of the crypto sector and it was up to me to determine a rationale for why certain cryptocurrencies were important for customers.
 Scarcity is one of the main attractors for cryptocurrency, since only a limited number of coins can be made. Its important for investors
 to know that their crypto investment should be in a coin that has as high scarcity as practically possible. In this way, the most value can be accumulated over time due to scarcity.
 
@@ -175,5 +175,5 @@ This allows for scarcity and increasing value over time to be established for th
 It was also interesting to see that the KMeans algorithm used in this analysis was able to accurately cluster the largest and most successful cryptocurrencies into the same group, Class 0.
 Additionally Class 0 contained only two types of proof of stake mechanisms ("prooftype" column). The most credible cryptocurrencies
 in this group were Bitcoin, Ethereum, and Litecoin, among others. With most of the coins using the strong and popular 'PoW' proof of stake mechanism,
-Class 0 began to look like the most credible Class of cryptos for customers to invest in.
-Thus, I recommended the Class 0 set of cryptocurrencies (Bitcoin, Ethereumm Litecoin, etc.) to the customers of Accountability Accounting because it serves as a credible, sustainable, and dependenable investment.
+Class 0 looked like the most credible Class of cryptos for customers to invest in.
+Thus, my recommended cryptocurrency portfolio is comprised of Class 0 investments (Bitcoin, Ethereumm Litecoin, etc.) which will serve as highly attractive long term investments for the accumulation of value due to scarcity for Accountability Accounting's customers.
