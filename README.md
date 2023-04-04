@@ -79,3 +79,50 @@ KMeans clustering was then carried out with k =5, for  clustering into 5 groups.
 
 The predictions for clustering were finalized to a list of classes. This "Class" list contained numerical labels for each cluster group
 ranging from 0 to 4 (a total of 5 groups).
+
+The clusters were plotted in 3D based on each Principal Component (PC). PC1 was plotted on the X axis. PC2 was plotted on the Y axis. PC3 was plotted on the Z axis..
+
+Below is the code for the 3D plot:
+
+`import plotly.express as px`
+
+`fig = px.scatter_3d(`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     clustered_df,`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     x="PC 1",`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     y="PC 2",`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     z="PC 3",`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     color="Class",`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     symbol="Class",`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     hover_name = "CoinName",`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     hover_data = ["Algorithm"],`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`     width=800,`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` )`
+
+`fig.update_layout(legend=dict(x=0, y=1))`
+
+`fig.show()`
+
+
+![3D_plot](https://github.com/willmino/Cryptocurrencies/blob/main/images/3D_plot.png)
+
+We can clearly see the five different clustering groups represented in the 3D plot above. 
+They are denoted by the colors dark purple, light purple, salmon, orange, and yellow.
+
+### Observing Trends in the Data
+
+After going back to our clustered dataset, we looked at the non scaled data along with the Classes that were assigned to each cluster.
+
+For example, attempts were made to observe the relationship among clusters when viewing the "TotalCoinsMined" ad "TotalCoinSupply" independent variables.
+
+Here is the plot of the scaled 2D data.
+
