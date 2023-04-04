@@ -126,3 +126,15 @@ For example, attempts were made to observe the relationship among clusters when 
 
 Here is the plot of the scaled 2D data.
 
+![2D_plot](https://github.com/willmino/Cryptocurrencies/blob/main/images/2D_plot.png)s
+
+We can see that on a 2D plot, groups 0 and 1 are clustered very similarly.
+
+To attempt to observe the similarties between these clusters, I looked at different summary statistics of the data.
+For example, grouping this data set by "Class" and looking at mean as the aggregation function reveals.
+
+`mined_df.groupby("Class").mean()["TotalCoinsMined"]`
+
+
+
+Group 2 was completely different from the rest of the groups so it was plotted in the upper right corner of the plot, away from all other points.
